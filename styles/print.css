@@ -1,0 +1,172 @@
+/* Print styles */
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 12pt;
+        line-height: 1.4;
+        color: black;
+        background: white;
+    }
+
+    .app-header,
+    .toolbar,
+    .right-panel,
+    .student-actions,
+    .modal {
+        display: none !important;
+    }
+
+    .main-content {
+        display: block;
+        height: auto;
+    }
+
+    .left-panel {
+        padding: 0;
+        background: white;
+    }
+
+    .classroom-container {
+        page-break-inside: avoid;
+    }
+
+    .classroom-labels {
+        margin-bottom: 2rem;
+        padding: 0;
+        text-align: center;
+    }
+
+    .label-center {
+        background: black !important;
+        color: white !important;
+        padding: 0.5rem 2rem;
+        border-radius: 0;
+        font-size: 14pt;
+        font-weight: bold;
+    }
+
+    .classroom {
+        gap: 2rem;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .desk {
+        border: 2px solid black !important;
+        background: white !important;
+        font-size: 10pt;
+        font-weight: bold;
+        box-shadow: none !important;
+        transform: none !important;
+        page-break-inside: avoid;
+    }
+
+    .desk.occupied {
+        background: #f0f0f0 !important;
+    }
+
+    .desk.absent {
+        background: #e0e0e0 !important;
+        opacity: 1 !important;
+    }
+
+    .desk-number {
+        background: black !important;
+        color: white !important;
+        font-size: 8pt;
+    }
+
+    /* Print header */
+    .print-header {
+        display: block !important;
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid black;
+    }
+
+    .print-header h1 {
+        font-size: 18pt;
+        margin-bottom: 0.5rem;
+    }
+
+    .print-header .date {
+        font-size: 12pt;
+        color: #666;
+    }
+
+    /* Print footer */
+    .print-footer {
+        display: block !important;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid black;
+        text-align: center;
+        font-size: 10pt;
+    }
+
+    /* Ensure proper page breaks */
+    .classroom-container {
+        page-break-before: auto;
+        page-break-after: auto;
+        page-break-inside: avoid;
+    }
+
+    /* Page margins */
+    @page {
+        margin: 2cm;
+        size: A4;
+    }
+
+    /* Print-specific layout adjustments */
+    .section {
+        page-break-inside: avoid;
+    }
+
+    .left-section,
+    .right-section {
+        grid-template-columns: repeat(2, 100px);
+        gap: 0.5rem;
+    }
+
+    .middle-section {
+        grid-template-columns: repeat(3, 100px);
+        gap: 0.5rem;
+    }
+
+    .desk {
+        width: 100px;
+        height: 50px;
+        font-size: 9pt;
+    }
+}
+
+/* Print preview styles for screen */
+.print-preview {
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+    max-width: 210mm;
+    min-height: 297mm;
+    padding: 2cm;
+}
+
+.print-preview .app-header,
+.print-preview .toolbar,
+.print-preview .right-panel {
+    display: none;
+}
+
+.print-preview .main-content {
+    display: block;
+    height: auto;
+}
+
+.print-preview .left-panel {
+    padding: 0;
+}
