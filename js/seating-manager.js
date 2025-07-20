@@ -534,7 +534,7 @@ class SeatingManager {
     // Example configuration method - call this to set up your preferences
     configureSeatingPreferences() {
         // Example: Set Ismail and Liam to have 30% chance of sitting together
-        this.setPairProbability('Ismail', 'Liam', 1.0);
+         this.setPairProbability('Ismail', 'Liam', 1.0);
         
         // Example: Make a student prefer the right section
         // this.setSectionPreference('Ismail', 0.1, 0.2, 0.8); // 80% chance for right section
