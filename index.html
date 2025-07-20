@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasseromsplanlegger - Classroom Seating Manager</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/print.css" media="print">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+
+
+        <div class="main-content">
+            <!-- Left Panel - Classroom Layout -->
+            <div class="left-panel">
+                <div class="toolbar">
+                    <div class="algorithm-controls">
+                        <button id="generate-btn" class="btn btn-primary">
+                            <i class="fas fa-shuffle"></i> <span>Generer nye plasser</span>
+                        </button>
+                        <button id="preferences-btn" class="btn btn-secondary">
+                            <i class="fas fa-cog"></i> <span>Innstillinger</span>
+                        </button>
+                    </div>
+
+                    <div class="layout-controls">
+                        <select id="layout-select" class="control-select">
+                            <option value="default">Default</option>
+                        </select>
+                        <button id="create-layout-btn" class="btn btn-secondary">
+                            <i class="fas fa-plus"></i> <span>Lag nytt klasserom</span>
+                        </button>
+                        <button id="delete-layout-btn" class="btn btn-danger" style="display: none;">
+                            <i class="fas fa-trash"></i> <span>Slett oppsett</span>
+                        </button>
+                    </div>
+
+                    <div class="action-controls">
+                        <button id="save-image-btn" class="btn btn-secondary">
+                            <i class="fas fa-camera"></i> <span>Lagre</span>
+                        </button>
+                        <button id="clear-all-btn" class="btn btn-danger">
+                            <i class="fas fa-times-circle"></i> <span>Tøm alle</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="classroom-container">
+                    <div class="classroom-labels">
+                        <span class="label-left">Grupperom</span>
+                        <span class="label-center white-text">TAVLE</span>
+                        <span class="label-right"></span>
+                    </div>
+                    
+                    <div id="classroom" class="classroom">
+                        <div id="left" class="section left-section"></div>
+                        <div id="middle" class="section middle-section"></div>
+                        <div id="right" class="section right-section"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Student Management -->
+            <div class="right-panel">
+                <div class="panel-section">
+                    <h3>Elevliste</h3>
+                    
+                    <div class="student-controls">
+                        <input type="text" id="new-student" placeholder="Legg til elev">
+                        <button onclick="studentManager.addStudent()" class="btn btn-small btn-primary">
+                            <i class="fas fa-plus"></i> <span>Legg til</span>
+                        </button>
+                    </div>
+
+                    <ul id="student-list" class="student-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preferences Modal -->
+    <div id="preferences-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-preferences">&times;</span>
+            <h3>Plasseringsinnstillinger</h3>
+            <div id="preferences-content">
+                <p>Velg en elev for å sette preferanser:</p>
+                <select id="student-select">
+                    <option value="">Velg elev...</option>
+                </select>
+                
+                <div id="student-preferences" style="display: none;">
+                    <h4 id="selected-student-name"></h4>
+                    
+                    <div class="preference-group">
+                        <label>Ønsker å sitte ved siden av:</label>
+                        <div id="preferred-partners"></div>
+                    </div>
+                    
+                    <div class="preference-group">
+                        <label>Bør ikke sitte ved siden av:</label>
+                        <div id="avoid-partners"></div>
+                    </div>
+                    
+                    <div class="preference-group">
+                        <label>Foretrukket del av rommet:</label>
+                        <select id="section-preference">
+                            <option value="">Ingen preferanse</option>
+                            <option value="left">Venstre side</option>
+                            <option value="middle">Midten</option>
+                            <option value="right">Høyre side</option>
+                        </select>
+                    </div>
+                    
+                    <div class="preference-group">
+                        <label>Styrke på preferanse:</label>
+                        <select id="section-weight">
+                            <option value="1.0">Normal</option>
+                            <option value="1.5">Sterk</option>
+                            <option value="2.0">Meget sterk</option>
+                        </select>
+                    </div>
+                    
+                    <button id="save-preferences" class="btn btn-primary">Lagre preferanser</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/storage-manager.js"></script>
+    <script src="js/student-manager.js"></script>
+    <script src="js/seating-manager.js"></script>
+    <script src="js/layout-creator.js"></script>
+    <script src="js/preferences-manager.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
